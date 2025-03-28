@@ -37,4 +37,7 @@ def test_analyze_file(temp_text_file):
     assert result['word_count'] == 12
     assert result['sentence_count'] == 4
 
+def test_analyze_file_not_found():
+    with pytest.raises(FileNotFoundError):
+        analyze_file("nonexistent_file.txt")
 
