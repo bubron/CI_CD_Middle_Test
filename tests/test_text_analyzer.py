@@ -23,3 +23,12 @@ def temp_text_file(tmp_path, sample_text):
 ])
 def test_count_sentences(text, expected):
     assert count_sentences(text) == expected
+
+@pytest.mark.parametrize("text,expected", [
+    ("Одне слово", 2),
+    ("Кілька, слів: розділених; різними символами", 5),
+    ("", 0),
+])
+def test_count_words(text, expected):
+    assert count_words(text) == expected
+
