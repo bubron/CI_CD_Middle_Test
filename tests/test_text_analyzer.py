@@ -14,3 +14,12 @@ def temp_text_file(tmp_path, sample_text):
     file = tmp_path / "test_file.txt"
     file.write_text(sample_text)
     return str(file)
+
+@pytest.mark.parametrize("text,expected", [
+    ("Одне речення.", 1),
+    ("Перше. Друге! Третє?", 3),
+    ("Без речень", 0),
+    ("Кілька... крапок... рахуються як одне.", 2),
+])
+def test_count_sentences(text, expected):
+    assert count_sentences(text) == expected
