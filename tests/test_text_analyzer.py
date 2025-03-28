@@ -32,3 +32,9 @@ def test_count_sentences(text, expected):
 def test_count_words(text, expected):
     assert count_words(text) == expected
 
+def test_analyze_file(temp_text_file):
+    result = analyze_file(temp_text_file)
+    assert result['word_count'] == 12
+    assert result['sentence_count'] == 4
+
+
