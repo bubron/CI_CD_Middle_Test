@@ -8,3 +8,9 @@ def sample_text():
 @pytest.fixture
 def sample_text_with_commas():
     return "Слово, ще слово: третє; і останнє."
+
+@pytest.fixture
+def temp_text_file(tmp_path, sample_text):
+    file = tmp_path / "test_file.txt"
+    file.write_text(sample_text)
+    return str(file)
